@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Valentine, will you?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Will you be my Valentine?</h1>
+        <div class="buttons">
+            <button id="yesBtn" class="yes">Yes</button>
+            <button id="noBtn" class="no">No</button>
+        </div>
+    </div>
+    <script>
+        // Yes button: Go to I Love You page
+        document.getElementById("yesBtn").onclick = function() {
+            window.location.href = "iloveyou.html";
+        };
+
+        // No button: Bounce away on hover or click
+        const noBtn = document.getElementById("noBtn");
+        noBtn.addEventListener('mouseover', bounceNo);
+        noBtn.addEventListener('click', bounceNo);
+
+        function bounceNo() {
+            // Random position within container
+            const cont = document.querySelector('.container');
+            const contRect = cont.getBoundingClientRect();
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            const padding = 20;
+
+            // Ensure the button stays inside the container
+            const x = Math.random() * (cont.offsetWidth - btnWidth - padding);
+            const y = Math.random() * (cont.offsetHeight - btnHeight - padding);
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = x + 'px';
+            noBtn.style.top = (y + 90) + 'px'; // offset below title
+        }
+    </script>
+</body>
+</html>
